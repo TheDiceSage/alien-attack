@@ -9,7 +9,6 @@ height = 48.05195
 
 [node name="Rocket" type="Area2D" unique_id=1311291036]
 script = ExtResource("1_dkv7l")
-Speed = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053311543]
 scale = Vector2(0.6, 0.6)
@@ -19,3 +18,6 @@ texture = ExtResource("1_3341w")
 rotation = 1.5707964
 scale = Vector2(1.54, 1.54)
 shape = SubResource("CapsuleShape2D_lnu2h")
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1341596433]
+position = Vector2(-47, 0)

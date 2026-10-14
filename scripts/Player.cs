@@ -3,6 +3,7 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
     [Export] public float Speed = 200f;
+    [Export] public PackedScene RocketScene;
 
     public override void _Process(double delta)
     {
@@ -28,9 +29,8 @@ public partial class Player : CharacterBody2D
 
     public void Shoot()
 {
-    GD.Print("Shoot");
-    var rocket = GD.Load<PackedScene>("res://scenes/Rocket.tscn").Instantiate<Rocket>();
+    var rocket = RocketScene.Instantiate<Rocket>();
     GetParent().AddChild(rocket);
-    rocket.GlobalPosition = GlobalPosition;
+    rocket.GlobalPosition = GlobalPosition + new Vector2(80, 0);
 }
 }
