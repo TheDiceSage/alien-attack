@@ -5,6 +5,9 @@ public partial class Player : CharacterBody2D
     [Export] public float Speed = 200f;
     [Export] public PackedScene RocketScene;
 
+    [Signal]
+    public delegate void TookDamageEventHandler();
+
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("Shoot"))
@@ -23,8 +26,6 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
 
         GlobalPosition = GlobalPosition.Clamp(new Vector2(0, 0), ScreenSize);
-
-        GD.Print(GlobalPosition);
     }
 
     public void Shoot()
@@ -33,4 +34,16 @@ public partial class Player : CharacterBody2D
     GetParent().AddChild(rocket);
     rocket.GlobalPosition = GlobalPosition + new Vector2(80, 0);
 }
+
+public void TakeDamage()
+    {
+        GD.Print("Player took damage!");
+        EmitSignal("TookDamage");
+
+    }
+
+    public void Die()
+    {
+        QueueFree();
+    }
 }

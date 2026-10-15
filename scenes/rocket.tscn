@@ -8,6 +8,8 @@ radius = 9.740259
 height = 48.05195
 
 [node name="Rocket" type="Area2D" unique_id=1311291036]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_dkv7l")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053311543]
