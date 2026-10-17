@@ -4,10 +4,14 @@ using System;
 public partial class Enemy : Area2D
 {
     [Export] public float EnemySpeed = -240f;
+
+    [Signal]
+    public delegate void EnemyDiedEventHandler(Enemy enemyInstance);
     
     public override void _Ready()
     {
         BodyEntered += OnBodyEntered;
+
     }
 
     public override void _PhysicsProcess(double delta)
@@ -18,6 +22,7 @@ public partial class Enemy : Area2D
 
     public void Die()
     {
+        EmitSignal(SignalName.EnemyDied, this);
         QueueFree();
     }
 

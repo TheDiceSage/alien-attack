@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cxgi087m2ji8r"]
+
+[ext_resource type="Script" uid="uid://bv4aygwrl18sg" path="res://scripts/GameOverScreen.cs" id="1_61w2s"]
+[ext_resource type="FontFile" uid="uid://dxh081pgjiinu" path="res://assets/font/Kenney Blocks.ttf" id="2_jw6e5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y08ff"]
+bg_color = Color(0.55, 0, 0.09166684, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_y08ff"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbvxk"]
+font_size = 48
+font_color = Color(0.56, 1, 0.7873333, 1)
+
+[node name="GameOverScreen" type="Control" unique_id=1421160694]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61w2s")
+
+[node name="Panel" type="Panel" parent="." unique_id=1631092737]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -167.0
+offset_right = 277.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y08ff")
+
+[node name="GameOver" type="Label" parent="Panel" unique_id=454272574]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -80.96
+offset_right = 103.00012
+offset_bottom = -30.95996
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_y08ff")
+
+[node name="Score" type="Label" parent="Panel" unique_id=1815659685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -11.5
+offset_right = 48.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_tbvxk")
+
+[node name="RetryButton" type="Button" parent="Panel" unique_id=1734640498]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.625
+offset_top = 45.270004
+offset_right = 104.625
+offset_bottom = 114.27008
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jw6e5")
+theme_override_font_sizes/font_size = 44
+text = "RETRY"
+
+[connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]

@@ -8,6 +8,8 @@ public partial class Player : CharacterBody2D
     [Signal]
     public delegate void TookDamageEventHandler();
 
+    AudioStreamPlayer2D RocketShotSound => GetNode<AudioStreamPlayer2D>("RocketShotSound");
+
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("Shoot"))
@@ -29,17 +31,17 @@ public partial class Player : CharacterBody2D
     }
 
     public void Shoot()
-{
-    var rocket = RocketScene.Instantiate<Rocket>();
-    GetParent().AddChild(rocket);
-    rocket.GlobalPosition = GlobalPosition + new Vector2(80, 0);
-}
+    {
+        var rocket = RocketScene.Instantiate<Rocket>();
+        GetParent().AddChild(rocket);
+        rocket.GlobalPosition = GlobalPosition + new Vector2(80, 0);
+        RocketShotSound.Play();
+    }
 
-public void TakeDamage()
+    public void TakeDamage()
     {
         GD.Print("Player took damage!");
         EmitSignal("TookDamage");
-
     }
 
     public void Die()

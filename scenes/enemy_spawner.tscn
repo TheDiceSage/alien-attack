@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://7ncitm33vcq5" path="res://scripts/EnemySpawner.cs" id="1_ks1gq"]
 [ext_resource type="PackedScene" uid="uid://b11be70vsnsmp" path="res://scenes/enemy.tscn" id="2_devoi"]
+[ext_resource type="PackedScene" uid="uid://blhnlfqh8rg8a" path="res://scenes/path_enemy.tscn" id="3_xl0gr"]
 
 [node name="EnemySpawner" type="Node2D" unique_id=1974977372]
 script = ExtResource("1_ks1gq")
 EnemyScene = ExtResource("2_devoi")
+PathEnemyScene = ExtResource("3_xl0gr")
 
 [node name="SpawnPositions" type="Node2D" parent="." unique_id=1404272536]
 
@@ -30,3 +32,9 @@ position = Vector2(1350, 675)
 [node name="Timer" type="Timer" parent="." unique_id=1448619425]
 wait_time = 3.0
 autostart = true
+
+[node name="PathEnemyTimer" type="Timer" parent="." unique_id=351195764]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="PathEnemyTimer" to="." method="_on_path_enemy_timer_timeout"]
